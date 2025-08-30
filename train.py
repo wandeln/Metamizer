@@ -13,7 +13,7 @@ from torch.optim import Adam, AdamW
 from torch.optim.lr_scheduler import MultiStepLR
 import numpy as np
 from get_param import params,toCuda,toCpu,get_hyperparam,get_load_hyperparam,toDType
-from utils import has_nan, replace_with_periodic_padding
+from utils import has_nan
 
 torch.manual_seed(0)
 torch.set_num_threads(4)
@@ -42,8 +42,6 @@ if params.load_latest or params.load_date_time is not None or params.load_index 
 	params.load_index=int(params.load_index)
 	print(f"loaded: {params.load_date_time}, {params.load_index}")
 params.load_index = 0 if params.load_index is None else params.load_index
-
-metamizer = replace_with_periodic_padding(metamizer)
 
 datasets = []
 names = []
